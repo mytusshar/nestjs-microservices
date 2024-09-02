@@ -1,0 +1,38 @@
+{
+  "monorepo": true,
+  "root": "apps/invoice-service/",
+  "sourceRoot": "apps/invoice-service/src",
+  "compilerOptions": {
+    "webpack": true,
+    "tsConfigPath": "apps/invoice-service/tsconfig.app.json"
+  },
+  "projects": {
+    "invoice-service": {
+      "type": "application",
+      "root": "apps/invoice-service",
+      "entryFile": "main",
+      "sourceRoot": "apps/invoice-service/src",
+      "compilerOptions": {
+        "tsConfigPath": "apps/invoice-service/tsconfig.app.json"
+      }
+    },
+    "sales-report-service": {
+      "type": "application",
+      "root": "apps/sales-report-service",
+      "entryFile": "main",
+      "sourceRoot": "apps/sales-report-service/src",
+      "compilerOptions": {
+        "tsConfigPath": "apps/sales-report-service/tsconfig.app.json"
+      }
+    },
+    "shared": {
+      "type": "library",
+      "root": "libs/shared",
+      "entryFile": "index",
+      "sourceRoot": "libs/shared/src",
+      "compilerOptions": {
+        "tsConfigPath": "libs/shared/tsconfig.lib.json"
+      }
+    }
+  }
+}
