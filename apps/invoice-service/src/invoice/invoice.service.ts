@@ -52,7 +52,7 @@ export class InvoiceService {
     }
 
     // Create the invoice
-    const invoice = new this.invoiceModel({
+    const invoice = await this.invoiceModel.create({
       customer: createInvoiceDto.customer,
       amount: createInvoiceDto.amount,
       reference: createInvoiceDto.reference,
@@ -60,9 +60,7 @@ export class InvoiceService {
       items: itemIds,
     });
 
-    // Save invoice
-    const savedInvoice = await invoice.save();
-    return savedInvoice.toJSON(); // Apply schema transformation
+    return invoice;
   }
 
   async findOne(id: string) {
@@ -73,7 +71,7 @@ export class InvoiceService {
     if (!invoice) {
       throw new BadRequestException('Invoice not found');
     }
-    return invoice.toJSON(); // Apply schema transformation
+    return invoice;
   }
 
   async findAll(dateFrom?: Date, dateTo?: Date) {
@@ -87,7 +85,7 @@ export class InvoiceService {
       .find(filter)
       .populate('items')
       .exec();
-    return invoices.map((invoice) => invoice.toJSON()); // Apply schema transformation
+    return invoices;
   }
 
   @Cron(CronExpression.EVERY_MINUTE)

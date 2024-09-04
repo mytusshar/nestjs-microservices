@@ -21,12 +21,6 @@ const mockInvoiceData = {
   amount: 100,
   reference: 'INV-001',
   items: [{ sku: 'item-sku', qt: 1 }], // Adjusted item structure
-  toJSON: jest.fn().mockReturnValue({
-    _id: 'invoice-id',
-    amount: 100,
-    reference: 'INV-001',
-    items: [{ sku: 'item-sku', qt: 1 }],
-  }),
 };
 
 const mockInvoiceModel = {
@@ -69,20 +63,24 @@ describe('InvoiceService', () => {
 
   describe('create', () => {
     it('should create an invoice', async () => {
+      const date = new Date();
       const createInvoiceDto: CreateInvoiceDto = {
         customer: 'customer-id',
         amount: 100,
         reference: 'INV-001',
         items: [{ sku: 'item-sku', qt: 1 }], // Adjusted item structure
-        date: new Date().toISOString(),
+        date: date.toISOString(),
       };
+      const expectedResult: any = Object.assign({}, createInvoiceDto);
+      expectedResult.items = ['item-id'];
+      expectedResult.date = date;
 
-      mockInvoiceModel.create.mockResolvedValue(createInvoiceDto);
+      mockInvoiceModel.create.mockResolvedValue(expectedResult);
 
       const result = await service.create(createInvoiceDto);
 
-      expect(mockInvoiceModel.create).toHaveBeenCalledWith(createInvoiceDto);
-      expect(result).toEqual(createInvoiceDto);
+      expect(mockInvoiceModel.create).toHaveBeenCalledWith(expectedResult);
+      expect(result).toEqual(expectedResult);
     });
 
     it('should throw ConflictException for duplicate invoice reference', async () => {

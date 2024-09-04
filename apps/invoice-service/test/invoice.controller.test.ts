@@ -3,7 +3,7 @@ import { InvoiceController } from '../src/invoice/invoice.controller';
 import { InvoiceService } from '../src/invoice/invoice.service';
 import { CreateInvoiceDto } from '../src/invoice/dto/create-invoice.dto';
 
-describe.skip('InvoiceController', () => {
+describe('InvoiceController', () => {
   let controller: InvoiceController;
   let service: InvoiceService;
 
