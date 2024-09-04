@@ -190,7 +190,7 @@ Output:
 ]
 ```
 
-## Daily sales report eamil example:
+## Daily sales report Email example:
 
 **Subject:** Daily Sales Summary for 04 September 2024
 
