@@ -65,6 +65,9 @@ export class InvoiceService {
   }
 
   async findOne(id: string) {
+    if (!isValidObjectId(id)) {
+      throw new BadRequestException('Invalid invoice id');
+    }
     const invoice = await this.invoiceModel
       .findById(id)
       .populate('items')

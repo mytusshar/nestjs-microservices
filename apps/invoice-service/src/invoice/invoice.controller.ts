@@ -1,5 +1,3 @@
-// src/invoices/invoice.controller.ts
-
 import { Controller, Get, Post, Body, Param, Query } from '@nestjs/common';
 import { InvoiceService } from './invoice.service';
 import { CreateInvoiceDto } from './dto/create-invoice.dto';
@@ -8,17 +6,17 @@ import { CreateInvoiceDto } from './dto/create-invoice.dto';
 export class InvoiceController {
   constructor(private readonly invoiceService: InvoiceService) {}
 
-  @Post('invoices')
+  @Post('invoice')
   async create(@Body() createInvoiceDto: CreateInvoiceDto) {
     return this.invoiceService.create(createInvoiceDto);
   }
 
-  @Get('invoices/:id')
+  @Get('invoice/:id')
   async findOne(@Param('id') id: string) {
     return this.invoiceService.findOne(id);
   }
 
-  @Get('invoices')
+  @Get('invoice')
   async findAll(
     @Query('dateFrom') dateFrom?: string,
     @Query('dateTo') dateTo?: string,

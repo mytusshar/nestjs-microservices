@@ -17,7 +17,7 @@ const mockItemModel = {
 
 // Mock for InvoiceModel
 const mockInvoiceData = {
-  _id: 'invoice-id',
+  _id: '66d8642d648b565a3afa6974',
   amount: 100,
   reference: 'INV-001',
   items: [{ sku: 'item-sku', qt: 1 }], // Adjusted item structure
@@ -109,9 +109,11 @@ describe('InvoiceService', () => {
         exec: jest.fn().mockResolvedValue(mockInvoiceData),
       });
 
-      const result = await service.findOne('invoice-id');
+      const result = await service.findOne('66d8642d648b565a3afa6974');
 
-      expect(mockInvoiceModel.findById).toHaveBeenCalledWith('invoice-id');
+      expect(mockInvoiceModel.findById).toHaveBeenCalledWith(
+        '66d8642d648b565a3afa6974',
+      );
       expect(result).toEqual(mockInvoiceData);
     });
 
@@ -121,7 +123,18 @@ describe('InvoiceService', () => {
         exec: jest.fn().mockResolvedValue(null),
       });
 
-      await expect(service.findOne('invoice-id')).rejects.toThrow(
+      await expect(service.findOne('66d8642d648b565a3afa6975')).rejects.toThrow(
+        BadRequestException,
+      );
+    });
+
+    it('should throw BadRequestException if invalid invoice id provided', async () => {
+      mockInvoiceModel.findById.mockReturnValue({
+        populate: jest.fn().mockReturnThis(),
+        exec: jest.fn().mockResolvedValue(null),
+      });
+
+      await expect(service.findOne('66d8642d648b565a3afa6')).rejects.toThrow(
         BadRequestException,
       );
     });
