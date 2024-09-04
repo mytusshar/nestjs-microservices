@@ -193,19 +193,17 @@ Output:
 ## Daily sales report eamil example:
 
 Daily Sales Summary for 04 September 2024
+
 Dear Team,
 
 Please find below the summary of total quantity sold per SKU for the date 04 September 2024.
 
-Total sales amount: 738
+**Total sales amount:** 738
 
-+-----------+---------------+  
-| SKU Total | Quantity Sold |  
-+-----------+---------------+  
-| ITEM-003  |            24 |  
-+-----------+---------------+  
-| ITEM-004  |            24 |  
-+-----------+---------------+  
-  
-Best regards,
+| SKU Total | Quantity Sold |
+|-----------|---------------|
+| ITEM-003  | 24            |
+| ITEM-004  | 24            |
+
+Best regards,  
 Your Company
