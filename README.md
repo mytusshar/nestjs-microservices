@@ -192,7 +192,7 @@ Output:
 
 ## Daily sales report eamil example:
 
-Daily Sales Summary for 04 September 2024
+**Subject:** Daily Sales Summary for 04 September 2024
 
 Dear Team,
 
