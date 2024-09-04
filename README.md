@@ -199,13 +199,13 @@ Please find below the summary of total quantity sold per SKU for the date 04 Sep
 
 Total sales amount: 738
 
-+-----------+---------------+
-| SKU Total | Quantity Sold |
-+-----------+---------------+
-| ITEM-003 | 24 |
-+-----------+---------------+
-| ITEM-004 | 24 |
-+-----------+---------------+
-
++-----------+---------------+  
+| SKU Total | Quantity Sold |  
++-----------+---------------+  
+| ITEM-003  |            24 |  
++-----------+---------------+  
+| ITEM-004  |            24 |  
++-----------+---------------+  
+  
 Best regards,
 Your Company
