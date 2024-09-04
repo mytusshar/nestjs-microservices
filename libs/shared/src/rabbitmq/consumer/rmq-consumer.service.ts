@@ -25,7 +25,7 @@ export class RabbitMqConsumerService extends RabbitMqBaseService {
     );
   }
 
-  private async handleMessage(msg: ConsumeMessage | null) {
+  async handleMessage(msg: ConsumeMessage | null) {
     if (msg) {
       const messageContent = msg.content.toString();
       console.log(`$$$ RMQ-Consumer: Received message: ${messageContent}`);

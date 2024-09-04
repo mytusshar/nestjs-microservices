@@ -11,6 +11,7 @@ import { CreateInvoiceDto } from './dto/create-invoice.dto';
 import { Invoice, InvoiceDocument } from './schemas/invoice.schema';
 import { Item, ItemDocument } from './schemas/item.schema';
 import { RabbitMqProducerService } from '../../../../libs/shared/src/index';
+import { isValidObjectId } from 'mongoose';
 
 @Injectable()
 export class InvoiceService {
