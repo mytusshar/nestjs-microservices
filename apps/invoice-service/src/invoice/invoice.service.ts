@@ -10,7 +10,7 @@ import { InjectModel } from '@nestjs/mongoose';
 import { CreateInvoiceDto } from './dto/create-invoice.dto';
 import { Invoice, InvoiceDocument } from './schemas/invoice.schema';
 import { Item, ItemDocument } from './schemas/item.schema';
-import { RabbitMqService2 } from '../../../../libs/shared/src/index';
+import { RabbitMqProducerService } from '../../../../libs/shared/src/index';
 
 @Injectable()
 export class InvoiceService {
@@ -18,7 +18,7 @@ export class InvoiceService {
     @InjectModel(Invoice.name)
     private readonly invoiceModel: Model<InvoiceDocument>,
     @InjectModel(Item.name) private readonly itemModel: Model<ItemDocument>,
-    private readonly rabbitService: RabbitMqService2,
+    private readonly rabbitService: RabbitMqProducerService,
   ) {}
 
   async create(createInvoiceDto: CreateInvoiceDto) {

@@ -4,7 +4,7 @@ import { InvoiceController } from './invoice.controller';
 import { InvoiceSchema } from './schemas/invoice.schema';
 import { ItemSchema } from './schemas/item.schema';
 import { MongooseModule } from '@nestjs/mongoose';
-import { RabbitMqModule2 } from '../../../../libs/shared/src/index';
+import { RabbitMqProducerModule } from '../../../../libs/shared/src/index';
 
 @Module({
   imports: [
@@ -12,7 +12,7 @@ import { RabbitMqModule2 } from '../../../../libs/shared/src/index';
       { name: 'Invoice', schema: InvoiceSchema },
       { name: 'Item', schema: ItemSchema },
     ]),
-    RabbitMqModule2,
+    RabbitMqProducerModule,
   ],
   controllers: [InvoiceController],
   providers: [InvoiceService],

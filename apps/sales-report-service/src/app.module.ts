@@ -2,11 +2,11 @@ import { MailerModule } from '@nestjs-modules/mailer';
 import { Module } from '@nestjs/common';
 import { AppController } from './app.controller';
 import { AppService } from './app.service';
-import { RabbitMqModule2 } from '../../../libs/shared/src/index';
+import { RabbitMqConsumerModule } from '../../../libs/shared/src/index';
 
 @Module({
   imports: [
-    RabbitMqModule2,
+    RabbitMqConsumerModule,
     MailerModule.forRoot({
       transport: {
         host: process.env.MAILER_HOST,

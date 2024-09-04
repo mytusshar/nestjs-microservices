@@ -3,10 +3,10 @@ import { getModelToken } from '@nestjs/mongoose';
 import { InvoiceService } from '../src/invoice/invoice.service';
 import { ConflictException, BadRequestException } from '@nestjs/common';
 import { CreateInvoiceDto } from '../src/invoice/dto/create-invoice.dto';
-import { RabbitMqService2 } from '../../../libs/shared/src/index';
+import { RabbitMqProducerService } from 'shared/src';
 
-// Mock for RabbitMqService2
-const mockRabbitMqService2 = {
+// Mock for RabbitMqProducerService
+const mockRabbitMqProducerService = {
   sendNotification: jest.fn(),
 };
 
@@ -54,8 +54,8 @@ describe('InvoiceService', () => {
           useValue: mockItemModel,
         },
         {
-          provide: RabbitMqService2,
-          useValue: mockRabbitMqService2,
+          provide: RabbitMqProducerService,
+          useValue: mockRabbitMqProducerService,
         },
       ],
     }).compile();
@@ -168,7 +168,7 @@ describe('InvoiceService', () => {
       expect(mockInvoiceModel.find).toHaveBeenCalledWith({
         date: { $gte: startOfDay, $lte: endOfDay },
       });
-      expect(mockRabbitMqService2.sendNotification).toHaveBeenCalled();
+      expect(mockRabbitMqProducerService.sendNotification).toHaveBeenCalled();
     });
   });
 });
