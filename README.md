@@ -11,6 +11,15 @@ Used microservices architecture.
 1. invoice-service
 2. sales-report-service:
 
+## Setting up queue
+
+[Visit RabbitMQ](https://www.rabbitmq.com/)
+
+## Setting up mongoDB
+
+[Visit MongoDB Atlas](https://www.mongodb.com/products/platform/atlas-database)
+Can also setup local mongoDB.
+
 ## ENV
 
 set .env based on .env.example
